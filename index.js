@@ -5,8 +5,8 @@ const link = 'https://dog.ceo/api/breeds/image/random/'
 
 function getDogImage() {
   let thisNumber = $('.JsInteger').val();
-  while (thisNumber >= 51 ) {
-    let thisNumber= 3;
+  if (thisNumber >= 51 || thisNumber < 1 ) {
+    thisNumber= 3;
   }
   console.log(thisNumber)
   let maybe = (link+thisNumber);
