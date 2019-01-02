@@ -1,29 +1,27 @@
 'use strict';
 
-const link = 'https://dog.ceo/api/breeds/image/random/'
+const well = 'https://dog.ceo/api/breed/'
+const here = '/images/random'
+
+
 
 function getDogImage() {
-  let thisNumber = $('.JsInteger').val();
-  if (thisNumber >= 51 || thisNumber < 1) {
-      thisNumber = 3;
-   }
-  //console.log()
-  let maybe = (link+thisNumber);
+  let thisName = $('.JsString').val();
+  let maybe = (well+thisName+here);
   fetch(maybe)
     .then(response => response.json())
     .then(responseJson => 
       displayResults(responseJson))
-    .catch(error => console.log('Something went wrong. Try again later.'));
+    .catch(error => alert('Something went wrong. Try to check the spelling, or try another breed.'));
     console.log(maybe);
 }
 
 function displayResults(responseJson) {
   console.log(responseJson);
-  for (let i=0; i< responseJson.message.length; i++){
   $('.results').append(
-    `<img src="${responseJson.message[i]}" class="results-img">`
+    `<img src="${responseJson.message}" class="results-img">`
   );
-  }
+  
   //display the results section
   $('.results').removeClass('hidden');
 }
